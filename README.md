@@ -147,6 +147,11 @@ aws lambda create-function
 --publish
 ```
   * **--publish** - request AWS Lambda to create the Lambda function and publish a version as an atomic operation. Otherwise multiple versions may be created and may be published at a later point.
+  
+### Test the lambda
+```
+aws lambda invoke --function-name HelloCouchbaseLambda --region us-west-2 --payload '' hellocouchbase.out
+```
 
 # Reference
   * https://github.com/ryansb/rsb.io/blob/master/template.yaml
