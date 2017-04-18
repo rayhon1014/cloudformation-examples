@@ -1,7 +1,7 @@
 # cloudformation-examples
 
 ## Parameter Definition
-Below are parameter in different types and variations.
+Below are parameter in different types and variations. When parameter is defined, it can be referenced using **!Ref**
 ```
 Parameters:  
    DomainRoot:    
@@ -19,6 +19,17 @@ Parameters:  
       Description: "Minimum cache lifetime in seconds for the CloudFront distribution"    
       Default: 90    
       Type: Number
+```
+
+## Rules for references
+```# reference parameter
+!Ref RootDomainName
+
+# reference resource
+!Ref RootBucket
+
+# reference a property of a resource
+!GetAtt RootBucket.WebsiteURL
 ```
 
 ## S3
@@ -116,18 +127,7 @@ Lambda:
       SubnetIds: !Ref Subnets
 ```
 
-### Rules for references
-```
-# reference parameter
-!Ref RootDomainName
 
-# reference resource
-!Ref RootBucket
-
-# reference a property of a resource
-!GetAtt RootBucket.WebsiteURL
-
-```
 
 ## Reference
   * https://github.com/ryansb/rsb.io/blob/master/template.yaml
