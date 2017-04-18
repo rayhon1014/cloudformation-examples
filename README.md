@@ -107,3 +107,6 @@ Lambda:
 !GetAtt RootBucket.WebsiteURL
 
 ```
+
+## Reference
+  * https://github.com/ryansb/rsb.io/blob/master/template.yaml
