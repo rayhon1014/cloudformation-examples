@@ -32,11 +32,11 @@ Resources:
           HostName: !Ref RootBucket
 Outputs:
   WebsiteURL:
-    Value: !GetAtt S3Bucket.WebsiteURL
-    Description: URL for the website hosted on S3
-  S3BucketSecureURL:
+    Value: !GetAtt RootBucket.WebsiteURL
+    Description: URL for website hosted on S3
+  S3BucketSecureURL:
     Value: !Sub
         - https://${Domain}
-        - Domain: !GetAtt S3Bucket.DomainName
+        - Domain: !GetAtt RootBucket.DomainName
     Description: Name of the S3 bucket to hold website content
 ```
