@@ -1,6 +1,6 @@
-# cloudformation-examples
+# CloudFormation Syntax
 
-## Parameter Definition
+### Parameter Definition
 Below are parameter in different types and variations. When parameter is defined, it can be referenced using **!Ref**
 ```
 Parameters:  
@@ -21,7 +21,7 @@ Parameters:  
       Type: Number
 ```
 
-## Rules for references
+### Rules for references
 ```# reference parameter
 !Ref RootDomainName
 
@@ -32,7 +32,8 @@ Parameters:  
 !GetAtt RootBucket.WebsiteURL
 ```
 
-## S3
+# CloudFormation Examples
+### S3
 Create a static website purely using S3.
   * Create 2 S3 Buckets. One for name.com and one for www.name.com
   * Set up redirection from www bucket to non-www bucket.
@@ -109,7 +110,7 @@ Outputs:
     Description: Name of the S3 bucket to hold website content
 ```
 
-## Lambda
+### Lambda
 ```
 Lambda:
   Type: AWS::Lambda::Function,			
@@ -129,5 +130,5 @@ Lambda:
 
 
 
-## Reference
+# Reference
   * https://github.com/ryansb/rsb.io/blob/master/template.yaml
