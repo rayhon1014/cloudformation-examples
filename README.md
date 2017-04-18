@@ -146,7 +146,7 @@ aws lambda create-function
 --memory-size 1024 
 --publish
 ```
-
+  * **--publish** - request AWS Lambda to create the Lambda function and publish a version as an atomic operation. Otherwise multiple versions may be created and may be published at a later point.
 
 # Reference
   * https://github.com/ryansb/rsb.io/blob/master/template.yaml
