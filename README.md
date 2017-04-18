@@ -85,14 +85,14 @@ Lambda:
     Code:
        S3Bucket: !Ref" LambdaCodeBucket
        S3Key: !Ref LambdaCodeKey
-       Handler: index.handler
-       MemorySize: 128,	
-       Role: !GetAtt" LambdaRole.Arn
-       Runtime: nodejs6.10
-       Timeout: 60
-       VpcConfig:
-         SecurityGroupIds: !Ref LambdaSecurityGroup
-         SubnetIds: Sbnets
+    Handler: index.handler
+    MemorySize: 128,	
+    Role: !GetAtt LambdaRole.Arn
+    Runtime: nodejs6.10
+    Timeout: 60
+    VpcConfig:
+      SecurityGroupIds: !Ref LambdaSecurityGroup
+      SubnetIds: !Ref Subnets
 ```
 
 ### Rules for references
