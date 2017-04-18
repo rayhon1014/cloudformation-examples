@@ -3,8 +3,7 @@
 ## S3
 Create a static website purely using S3.
 
-![](https://raw.githubusercontent.com/widdix/aws-cf-templates/master/static-website/static-website.png
-  )
+![](https://raw.githubusercontent.com/widdix/aws-cf-templates/master/static-website/static-website.png)
   
   * **Parameters** - You can define a parameter (eg. RootDomainName) and being referenced by **!Ref** in the template
   * **AccessControl: PublicRead** - public read permissions are required for buckets set up for website hosting
