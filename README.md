@@ -32,6 +32,11 @@ Parameters:  
 !GetAtt RootBucket.WebsiteURL
 ```
 
+### Other operators
+```
+# it concatentates www and domain name with a dot (.). In effect, it is like adding www. in front of domain name
+!Join [".", [ "www", !Ref SiteDomain ]]  
+```
 # CloudFormation Examples
 ### S3
 Create a static website purely using S3.
