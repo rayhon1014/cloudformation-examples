@@ -77,6 +77,24 @@ Outputs:
     Description: Name of the S3 bucket to hold website content
 ```
 
+## Lambda
+```
+Lambda:
+  Type: AWS::Lambda::Function,			
+  Properties:
+    Code:
+       S3Bucket: !Ref" LambdaCodeBucket
+       S3Key: !Ref LambdaCodeKey
+       Handler: index.handler
+       MemorySize: 128,	
+       Role: !GetAtt" LambdaRole.Arn
+       Runtime: nodejs6.10
+       Timeout: 60
+       VpcConfig:
+         SecurityGroupIds: !Ref LambdaSecurityGroup
+         SubnetIds: Sbnets
+```
+
 ### Rules for references
 ```
 # reference parameter
