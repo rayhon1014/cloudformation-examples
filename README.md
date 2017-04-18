@@ -133,7 +133,7 @@ Lambda:
       SubnetIds: !Ref Subnets
 ```
 # Deployment
-### Lambda
+### Lambda Creation
 ```
 aws lambda create-function 
 --function-name HelloWorld 
@@ -151,6 +151,10 @@ aws lambda create-function
 ### Test the lambda
 ```
 aws lambda invoke --function-name HelloCouchbaseLambda --region us-west-2 --payload '' hellocouchbase.out
+```
+### Lamda Update
+```
+aws lambda update-function-code --function-name HelloCouchbaseLambda --zip-file fileb:///Users/arungupta/workspaces/serverless/aws/hellocouchbase/hellocouchbase/target/hellocouchbase-1.0-SNAPSHOT.jar --region us-west-2 --publish
 ```
 
 # Reference
