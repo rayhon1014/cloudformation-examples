@@ -34,7 +34,7 @@ Parameters:  
 
 ### Other operators
 ```
-# it concatentates www and domain name with a dot (.). In effect, it is like adding www. in front of domain name
+# it concatenates www and domain name with a dot (.). In effect, it is like adding www. in front of domain name
 !Join [".", [ "www", !Ref SiteDomain ]]  
 ```
 # CloudFormation Examples
