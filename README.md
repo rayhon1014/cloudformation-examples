@@ -42,3 +42,16 @@ Outputs:
         - Domain: !GetAtt RootBucket.DomainName
     Description: Name of the S3 bucket to hold website content
 ```
+
+### Rules for references
+```
+# reference parameter
+!Ref RootDomainName
+
+# reference resource
+!Ref RootBucket
+
+# reference a property of a resource
+!GetAtt RootBucket.WebsiteURL
+
+```
