@@ -31,7 +31,22 @@ Resources:
       AccessControl: BucketOwnerFullControl
       WebsiteConfiguration:
         RedirectAllRequestsTo:
-          HostName: !Ref RootBucket
+          HostName: !Ref RootBucket
+  ImageBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    Properties:
+      AccessControl: PublicRead
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        RoutingRules:
+          - RedirectRule:
+              HttpRedirectCode: 307
+              HostName: !Sub ${Api}.execute-api.${AWS::Region}.amazonaws.com
+              Protocol: https
+              ReplaceKeyPrefixWith: prod?key=
+            RoutingRuleCondition:
+              HttpErrorCodeReturnedEquals: 404
 Outputs:
   WebsiteURL:
     Value: !GetAtt RootBucket.WebsiteURL
