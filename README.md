@@ -1,6 +1,7 @@
 # cloudformation-examples
 
 ## S3
+  * **Parameters** - You can define a parameter (eg. RootDomainName) and being referenced by **!Ref** in the template
   * **AccessControl: PublicRead** - public read permissions are required for buckets set up for website hosting
   * **WebsiteConfiguration** - this section is needed to turn on website hosting
   * **DeletionPolicy: Retain** -  Because this bucket resource has a DeletionPolicy attribute set to Retain, AWS CloudFormation will not delete this bucket when it deletes the stack.
