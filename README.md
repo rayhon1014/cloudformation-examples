@@ -1,8 +1,7 @@
 # cloudformation-examples
 
 ## S3
-
-  * **AccessControl: PublicRead** - public read permissions are required for buckets set up for website hosting
+  * **AccessControl: PublicRead** - public read permissions are required for buckets set up for website hosting
   * **WebsiteConfiguration** - this section is needed to turn on website hosting
   * **DeletionPolicy: Retain** -  Because this bucket resource has a DeletionPolicy attribute set to Retain, AWS CloudFormation will not delete this bucket when it deletes the stack.
   * **!Sub**: ${Domain} is a custom variable with its value filled by $GetAttr defined at the next line
