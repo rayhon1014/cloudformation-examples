@@ -132,7 +132,20 @@ Lambda:
       SecurityGroupIds: !Ref LambdaSecurityGroup
       SubnetIds: !Ref Subnets
 ```
-
+# Deployment
+### Lambda
+```
+aws lambda create-function 
+--function-name HelloWorld 
+--role arn:aws:iam:::role/service-role/myLambdaRole 
+--zip-file fileb:///Users/arungupta/workspaces/serverless/aws/hellocouchbase/hellocouchbase/target/hellocouchbase-1.0-SNAPSHOT.jar --handler org.sample.serverless.aws.couchbase.HelloCouchbaseLambda 
+--description "Hello Couchbase Lambda" 
+--runtime java8  
+--region us-west-2 
+--timeout 30 
+--memory-size 1024 
+--publish
+```
 
 
 # Reference
