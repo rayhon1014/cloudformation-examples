@@ -7,15 +7,29 @@
   * **!Sub**: ${Domain} is a custom variable with its value filled by $GetAttr defined at the next line**
 ```
 AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  RootDomainName:
+    Description: Domain name for your website (example.com)
+    Type: String
 Resources:
-  S3Bucket:
+  RootBucket:
     Type: AWS::S3::Bucket
     Properties:
+      BucketName: !Ref RootDomainName
       AccessControl: PublicRead
       WebsiteConfiguration:
         IndexDocument: index.html
-        ErrorDocument: error.html
-    DeletionPolicy: Retain
+        ErrorDocument: 404.html
+  WWWBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub
+          - www.${Domain}
+          - Domain: !Ref RootDomainName
+      AccessControl: BucketOwnerFullControl
+      WebsiteConfiguration:
+        RedirectAllRequestsTo:
+          HostName: !Ref RootBucket
 Outputs:
   WebsiteURL:
     Value: !GetAtt S3Bucket.WebsiteURL
