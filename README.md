@@ -133,6 +133,13 @@ Lambda:
       SubnetIds: !Ref Subnets
 ```
 # Deployment
+### IAM Role Creation
+```
+aws iam create-role --role-name microserviceRole --assume-role-policy-document file://./trust.json
+```
+And the trust.json is below:
+```
+```
 ### Lambda Creation
 ```
 aws lambda create-function 
