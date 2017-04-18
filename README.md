@@ -2,6 +2,8 @@
 
 ## S3
 Create a static website purely using S3.
+  * Create 2 S3 Buckets. One for name.com and one for www.name.com
+  * Set up redirection from www bucket to non-www bucket.
 
 ![](https://raw.githubusercontent.com/widdix/aws-cf-templates/master/static-website/static-website.png)
   
