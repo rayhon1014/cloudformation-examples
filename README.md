@@ -28,7 +28,19 @@ Resources:
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: 404.html
-  WWWBucket:
+  S3BucketPolicy:    
+    Type: 'AWS::S3::BucketPolicy'    
+    Properties:      
+      Bucket: !Ref RootBucket      
+      PolicyDocument:        
+      Statement:        
+        - Action:          
+          - 's3:GetObject'          
+      Effect: Allow          
+      Resource:          
+        - !Sub 'arn:aws:s3:::${RootBucket}/*'          
+      Principal: '*'
+  WWWBucket:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Sub
