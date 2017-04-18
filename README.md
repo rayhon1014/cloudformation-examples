@@ -1,5 +1,26 @@
 # cloudformation-examples
 
+## Parameter Definition
+Below are parameter in different types and variations.
+```
+Parameters:  
+   DomainRoot:    
+      Description: "Root domain name for the Route53 records. Must not be FQDN such as \"example.com\""    
+      Type: String  
+   PriceClass:    
+      Description: "Price class. Default is US-only, PriceClass_All is worldwide"    
+      Default: PriceClass_100    
+      AllowedValues:      
+         - PriceClass_100      
+         - PriceClass_200      
+         - PriceClass_All    
+      Type: String  
+   CacheMinimum:    
+      Description: "Minimum cache lifetime in seconds for the CloudFront distribution"    
+      Default: 90    
+      Type: Number
+```
+
 ## S3
 Create a static website purely using S3.
   * Create 2 S3 Buckets. One for name.com and one for www.name.com
