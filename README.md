@@ -38,7 +38,8 @@ Resources:
       WebsiteConfiguration:
         RedirectAllRequestsTo:
           HostName: !Ref RootBucket
-  ImageBucket:
+          Protocol: https
+  ImageBucket:
     Type: AWS::S3::Bucket
     DeletionPolicy: Retain
     Properties:
