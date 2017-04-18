@@ -3,7 +3,7 @@
 ## S3
   * **Parameters** - You can define a parameter (eg. RootDomainName) and being referenced by **!Ref** in the template
   * **AccessControl: PublicRead** - public read permissions are required for buckets set up for website hosting
-  * **WebsiteConfiguration** - this section is needed to turn on website hosting
+  * **WebsiteConfiguration** - this section is needed to turn on website hosting. Under this section, you can define a redirection rules. In the example, www.[domain.com] will redirect to [domain.com]. And if **!Ref** is referencing the Resouce ID (eg. RootBucket), it will use the unique value of this bucket (its name in this case).
   * **DeletionPolicy: Retain** -  Because this bucket resource has a DeletionPolicy attribute set to Retain, AWS CloudFormation will not delete this bucket when it deletes the stack.
   * **!Sub**: ${Domain} is a custom variable with its value filled by $GetAttr defined at the next line
   
