@@ -134,12 +134,84 @@ Lambda:
 ```
 # Deployment
 ### IAM Role Creation
+
+  * To change who can use a role, modify the role's trust policy.
+  * To change the permissions allowed by the role, modify the role's permissions policy (or policies).
+  
 ```
-aws iam create-role --role-name microserviceRole --assume-role-policy-document file://./trust.json
+aws iam create-role 
+--role-name microserviceRole 
+--assume-role-policy-document file://./trust.json
 ```
 And the trust.json is below:
 ```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": [
+          "lambda.amazonaws.com",
+          "apigateway.amazonaws.com"
+        ]
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
 ```
+
+  * This trust relationship allows Lambda functions and API Gateway to assume this role during execution. 
+  
+```
+aws iam put-role-policy 
+--role-name microserviceRole 
+--policy-name microPolicy 
+--policy-document file://./policy.json
+```
+And the policy file is below:
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:*"
+      ],
+      "Resource": "arn:aws:logs:*:*:*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "apigateway:*"
+      ],
+      "Resource": "arn:aws:apigateway:*::/*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "execute-api:Invoke"
+      ],
+      "Resource": "arn:aws:execute-api:*:*:*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+          "lambda:*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+  * The above policy define what the role can do.
+  
+
+
 ### Lambda Creation
 ```
 aws lambda create-function 
