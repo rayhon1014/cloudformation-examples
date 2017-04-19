@@ -139,6 +139,22 @@ aws iam create-role --role-name microserviceRole --assume-role-policy-document f
 ```
 And the trust.json is below:
 ```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": [
+          "lambda.amazonaws.com",
+          "apigateway.amazonaws.com"
+        ]
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
 ```
 ### Lambda Creation
 ```
